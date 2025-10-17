@@ -1,24 +1,38 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls" } -- Add your language servers
-})
 
 -- Add completion capabilities
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lspconfig = require('lspconfig')
-
--- Example: Setup language servers with completion
-lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-})
-
-lspconfig.pyright.setup({
-    capabilities = capabilities,
-})
-
-lspconfig.ts_ls.setup({
-    capabilities = capabilities,
+-- mason-lspconfig automatically sets up ALL installed language servers
+require("mason-lspconfig").setup({
+    -- Servers you want auto-installed
+    ensure_installed = { "lua_ls", "pyright", "ts_ls" },
+    
+    -- This automatically configures ALL servers installed via Mason
+    automatic_installation = true,
+    
+    -- Default handler for all servers
+    handlers = {
+        function(server_name)
+            require('lspconfig')[server_name].setup({
+                capabilities = capabilities,
+            })
+        end,
+        
+        -- Optional: Custom config for specific servers
+        ["lua_ls"] = function()
+            require('lspconfig').lua_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' } -- Recognize 'vim' global
+                        }
+                    }
+                }
+            })
+        end,
+    }
 })
 
 -- Add keybindings for LSP
@@ -30,5 +44,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     end,
 })

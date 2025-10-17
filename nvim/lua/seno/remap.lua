@@ -10,6 +10,12 @@ vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep >")})
 end)
 
+-- Or for a floating terminal:
+vim.keymap.set('n', '<C-\\>', function()
+  vim.cmd('vsplit | terminal')
+  vim.cmd('startinsert')
+end, { desc = 'Open terminal in split' })
+
 local opts = {noremap = true, silent = true }
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
