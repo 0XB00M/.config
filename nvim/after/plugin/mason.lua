@@ -1,10 +1,9 @@
+
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = { 
 		"lua_ls",
-		"shellcheck",
-		"shfmt",
-		"bash-language-server"
+		"bashls",
 	},
 	automatic_installation = true
 })
