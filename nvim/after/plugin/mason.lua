@@ -5,7 +5,7 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"bashls",
 	},
-	automatic_installation = true
+	automatic_installation = true,
 })
 
 
