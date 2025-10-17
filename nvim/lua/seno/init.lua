@@ -1,6 +1,5 @@
 require("seno.remap")
-require('feline').setup()
-require("seno.statusbar")
+require("seno.statusline")
 print("Hello from seno")
 require('onedark').setup {
     style = 'darker'

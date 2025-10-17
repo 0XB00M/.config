@@ -19,5 +19,8 @@ return require('packer').startup(function(use)
 	use('neovim/nvim-lspconfig')
 	use('mason-org/mason.nvim')
 	use('mason-org/mason-lspconfig.nvim')
-	use('feline-nvim/feline.nvim')
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
 end)
