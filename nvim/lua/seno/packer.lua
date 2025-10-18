@@ -7,18 +7,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 
 	-- theme
-	use{
-		"ficcdaf/ashen.nvim",
-		-- optional but recommended,
-		-- pin to the latest stable release:
-		tag = "*",
-		lazy = false,
-		priority = 1000,
-		-- configuration is optional!
-		opts = {
-			-- your settings here
-		},
-	}
+		use {'datsfilipe/vesper.nvim'}
 	use('Yazeed1s/minimal.nvim')
 
 	use 'wbthomason/packer.nvim'
