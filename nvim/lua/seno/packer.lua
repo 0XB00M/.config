@@ -32,12 +32,10 @@ return require('packer').startup(function(use)
 	-- Snippets
 	use('L3MON4D3/LuaSnip')         -- Snippet engine
 	use('saadparwaiz1/cmp_luasnip') -- Snippet completion source
-
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
-
 	use {
 		'numToStr/FTerm.nvim',
 		config = function()
@@ -50,4 +48,5 @@ return require('packer').startup(function(use)
 			})
 		end
 	}
+	use('ThePrimeagen/vim-be-good')
 end)
