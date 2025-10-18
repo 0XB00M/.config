@@ -6,7 +6,8 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 
-	use ("rebelot/kanagawa.nvim")
+	-- theme
+	use('Yazeed1s/minimal.nvim')
 
 	use 'wbthomason/packer.nvim'
 
@@ -32,7 +33,12 @@ return require('packer').startup(function(use)
 	use('hrsh7th/cmp-cmdline')      -- Command line completion
 
 	-- Snippets
-	use('L3MON4D3/LuaSnip')         -- Snippet engine
+	use('L3MON4D3/LuaSnip',{
+		-- follow latest release.
+		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp"
+	})         -- Snippet engine
 	use('saadparwaiz1/cmp_luasnip') -- Snippet completion source
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -52,3 +58,6 @@ return require('packer').startup(function(use)
 	}
 	use('ThePrimeagen/vim-be-good')
 end)
+
+
+
