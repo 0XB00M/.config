@@ -7,9 +7,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 
 	-- theme
-		use {'datsfilipe/vesper.nvim'}
 	use('Yazeed1s/minimal.nvim')
-
 	use 'wbthomason/packer.nvim'
 
 	use {

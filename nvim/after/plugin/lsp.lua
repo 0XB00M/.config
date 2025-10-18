@@ -38,7 +38,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- mason-lspconfig automatically sets up ALL installed language servers
 require("mason-lspconfig").setup({
     -- Servers you want auto-installed
-    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls"},
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "bashls", "gopls"},
     -- This automatically configures ALL servers installed via Mason
     automatic_installation = true,
     -- Default handler for all servers
